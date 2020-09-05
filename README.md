@@ -22,9 +22,12 @@ modules: This folder contains the different entities (or modules). At that point
 ##### Storing Endpoint
 The storing endpoint needs to securely store the provided data, it should accept
 three parameters:
+
 -id {string} The unique id to store the data on. If the same key already exists,
 the data value should be overwritten.
+
 -encryption_key {string} The key to encrypt the data with.
+
 -value {*} Can be any JSON type, which should be retrieved as the original type.
 
 API-Rest:
@@ -36,10 +39,40 @@ Content-type: application/json
 Accept: application/json
 
 {
-    "filterId": "xxxx",
+    "id": "xxxx",
     "encryption_id": "xxxx",
     value: "{ \"field1\": \"1\", \"field2\": \"2\", \"field3\": \"3\" }",
 }
+```
+
+##### Retrieval Endpoint
+
+The retrieval endpoint performs a query on the stored data, decrypts and returns the
+results. As multiple records might be requested the endpoint should always return
+an array of records. The required parameters are:
+
+-id {string} The exact id to query with or using the special wildcard ‘*’ query for
+a set of records (e.g. id: “engineering-jobs-*”).
+
+-decryption_key {string} The key to decrypt the data with.
+
+Retrieval Requirements:
+
+If the encryption key is wrong, make a system log and do not return the item. That is,
+return an empty array instead of an error message.
+
+API-Rest:
+
+```
+GET /{host}/secure-data
+
+Content-type: application/json
+Accept: application/json
+
+Params: 
+
+filterId: "xxx"
+encryption_id: "xxxx"
 ```
 
 ### Start server

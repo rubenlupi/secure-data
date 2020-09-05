@@ -1,0 +1,13 @@
+type SecureData {
+    id: String!
+    encryption_key: String!
+    value: String!
+}
+
+type Query {
+    getSecureData(filterId: String!, encryption_key: String!): [SecureData]
+}
+
+type Mutation {
+    setSecureData(id: String!, encryption_key: String!, value: String!): SecureData
+}
