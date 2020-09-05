@@ -1,0 +1,6 @@
+{
+  "watch": ["src", "tests", "config/default.js"],
+  "ext": "ts",
+  "ignore": [],
+  "exec": "TS_NODE_FILES=true ts-node . --files index.d.ts"
+}
