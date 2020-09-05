@@ -12,6 +12,21 @@ const appMiddlewares = (app) => {
     app.use(cookieParser());
 
     app.use((req, res, next) => {
+        if (process.env.NODE_ENV !== 'development') {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+            // info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
+            res.setHeader('Content-Security-Policy', "default-src 'self'");
+            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+            // info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
+            res.setHeader('X-XSS-Protection', '0')
+            // info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
+            res.setHeader('Cache-Control', 'max-age=31536000')
+            // info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+            res.setHeader('X-Frame-Options', 'deny')
+            // info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
+            res.setHeader('HTTP-Strict-Transport-Security', 'max-age=10886400')
+        }
         next();
     });
 }
