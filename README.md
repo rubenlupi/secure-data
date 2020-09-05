@@ -45,6 +45,22 @@ Accept: application/json
 }
 ```
 
+Graphql:
+
+```
+{host}/secure-data
+
+mutation Create {
+  setSecureData(
+    encryption_key: "my_key1",
+    value: "{ \"field1\": \"1\", \"field2\": \"2\" }",
+    id: "my_id"
+  ) {
+    id, value
+  }
+}
+```
+
 ##### Retrieval Endpoint
 
 The retrieval endpoint performs a query on the stored data, decrypts and returns the
@@ -73,6 +89,19 @@ Params:
 
 filterId: "xxx"
 encryption_id: "xxxx"
+```
+
+Graphql:
+
+```
+{host}/secure-data
+
+query Read {
+  getSecureData(filterId: "my_filter", encryption_key: "my_key") {
+    id
+    value
+  }
+}
 ```
 
 ### Start server
@@ -114,6 +143,18 @@ make build
 ```
 
 The `docker-compose.yml` has all the dependencies and set-up. you will find:
+
+##### local host
+
+API-Rest
+```
+http://localhost:8000
+```
+
+Graphql
+```
+http://localhost:3000
+```
 
 ##### Access Kibana
 ```
