@@ -1,6 +1,8 @@
 ### About the app
-#### Architechture
+#### Architecture
 This application follows a Clean Architecture structure. Although this application has a simple logic, this structure allows to scale the project through a cohesive and decoupled way.
+
+It must be taken into account that for small applications this structure is not the most suitable since it adds complexity
 
 The directory tree and the use of each of them are detailed below:
 
@@ -16,6 +18,29 @@ core && infra: are part of the most external layer. Them contain drivers, helper
 
 modules: This folder contains the different entities (or modules). At that point you can follow a DDD approach or a facade patterns for each module.
 
+#### Logic
+##### Storing Endpoint
+The storing endpoint needs to securely store the provided data, it should accept
+three parameters:
+-id {string} The unique id to store the data on. If the same key already exists,
+the data value should be overwritten.
+-encryption_key {string} The key to encrypt the data with.
+-value {*} Can be any JSON type, which should be retrieved as the original type.
+
+API-Rest:
+
+```
+POST /{host}/secure-data
+
+Content-type: application/json
+Accept: application/json
+
+{
+    "filterId": "xxxx",
+    "encryption_id": "xxxx",
+    value: "{ \"field1\": \"1\", \"field2\": \"2\", \"field3\": \"3\" }",
+}
+```
 
 ### Start server
 - Run the service up with typescript files:

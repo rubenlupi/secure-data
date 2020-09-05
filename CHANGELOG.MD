@@ -8,3 +8,6 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
  - Initial commit. Project skeleton
 
+## [1.2.0]
+### Added
+ - Add save-secure-data module
