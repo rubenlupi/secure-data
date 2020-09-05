@@ -1,3 +1,22 @@
+### About the app
+#### Architechture
+This application follows a Clean Architecture structure. Although this application has a simple logic, this structure allows to scale the project through a cohesive and decoupled way.
+
+The directory tree and the use of each of them are detailed below:
+
+config: contains global variables used through the project
+src: Contains the source project
+
+Inside src directory it can be found:
+-core
+-infra
+-modules
+
+core && infra: are part of the most external layer. Them contain drivers, helpers and interface adapters that are commons in all the application.
+
+modules: This folder contains the different entities (or modules). At that point you can follow a DDD approach or a facade patterns for each module.
+
+
 ### Start server
 - Run the service up with typescript files:
 ```
