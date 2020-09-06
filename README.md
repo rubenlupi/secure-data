@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/rubenlupi/secure-data/workflows/Node.js%20CI/badge.svg)
+
 ### About the app
 
 [Here](https://github.com/rubenlupi/secure-data/releases) are the different releases of the project. Also there a CHANGELOG.MD file whith the info of all the releases.
@@ -197,4 +199,4 @@ STDOUT_ENVIRONMENTS=development
 
 #GITHUB_ACTIONS
 
-This project executes CD in each commit
+This project executes CD in each commit. The result is shown in this file.
