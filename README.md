@@ -197,6 +197,6 @@ SALT_ROUNDS=10
 STDOUT_ENVIRONMENTS=development
 ```
 
-#GITHUB_ACTIONS
+# GITHUB_ACTIONS
 
 This project executes CD in each commit. The result is shown in this file.
