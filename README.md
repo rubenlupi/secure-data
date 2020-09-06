@@ -1,4 +1,7 @@
 ### About the app
+
+[Here](https://github.com/rubenlupi/secure-data/releases) are the different releases of the project. Also there a CHANGELOG.MD file whith the info of all the releases.
+
 #### Architecture
 This application follows a Clean Architecture structure. Although this application has a simple logic, this structure allows to scale the project through a cohesive and decoupled way.
 
