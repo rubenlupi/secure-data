@@ -156,6 +156,7 @@ make setup
 To work in local
 ```
 make dev
+```
 
 To run the application
 ```
