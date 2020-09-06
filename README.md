@@ -189,7 +189,6 @@ http://localhost:9200
 
 ## Environment variables
 
-### .env File
 At least this two entries are needed in a .env file located at the root level of the project.
 
 ```
@@ -197,6 +196,6 @@ SALT_ROUNDS=10
 STDOUT_ENVIRONMENTS=development
 ```
 
-# GITHUB_ACTIONS
+## GITHUB_ACTIONS
 
 This project executes CD in each commit. The result is shown in this file.
