@@ -188,9 +188,8 @@ http://localhost:9200
 ```
 
 ## Environment variables
-- STDOUT_ENVIRONMENTS
 
-### .env
+### .env File
 At least this two entries are needed in a .env file located at the root level of the project.
 
 ```
