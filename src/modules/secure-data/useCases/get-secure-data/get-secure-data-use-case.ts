@@ -31,19 +31,30 @@ class GetSecureDataUseCase {
         }
     }
 
+    private checkInputs(filterId: string, encryption_key: string) {
+        if (!filterId) {
+            throw(new this.APPError(CodeErrors.FILTER_REQUIRED_ERROR()));
+        }
+        if (!encryption_key) {
+            throw(new this.APPError(CodeErrors.ENCRYPTION_KEY_REQUIRED_ERROR()));
+        }
+    }
+
+    private filterByRegex(filterId: string, data: ISecureData[]): ISecureData[] {
+        const regex = this.buildRegex(filterId);
+        return data.filter(item => {
+            return item.id.match(regex);
+        });
+    }
+
     public async execute(
         filterId: string,
         encryption_key: string
     ): Promise<ISecureData[]> {
+        this.checkInputs(filterId, encryption_key);
         const resultsDb: ISecureData[] = await this.secureDataRepo.getMany();
         if (!resultsDb) return [];
-        if (!filterId) {
-            throw(new this.APPError(CodeErrors.FILTER_REQUIRED_ERROR()));
-        }
-        const regex = this.buildRegex(filterId);
-        const resultFiletered: ISecureData[] = resultsDb.filter(item => {
-            return item.id.match(regex);
-        });
+        const resultFiletered = this.filterByRegex(filterId, resultsDb);
         // match the encryption_key
 	    const results = await Promise.all(resultFiletered.map(item => this.hashHelper.compare(
             encryption_key,

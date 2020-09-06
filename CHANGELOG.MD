@@ -23,3 +23,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [1.4.0](https://github.com/rubenlupi/secure-data/releases/tag/1.4.0)
 ### Added
  - Improve security in headers
+
+## [1.5.0](https://github.com/rubenlupi/secure-data/releases/tag/1.5.0)
+### Added
+ - Add integration tests (TODO get integration test for graphql)

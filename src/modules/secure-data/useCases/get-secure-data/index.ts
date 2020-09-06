@@ -7,27 +7,34 @@ import { HashHelper } from '../../../../core/helpers/hash';
 import { CryptoHelper } from '../../../../core/helpers/crypto';
 import { APPError } from "../../../../core/logic/errors";
 
-const repo = new SecureDataRepo(SecureData);
-const hashHelper = new HashHelper();
-const cryptoHelper = new CryptoHelper();
+class InitGet {
+    public static getInitUseCase() {
+        const repo = new SecureDataRepo(SecureData);
+        const hashHelper = new HashHelper();
+        const cryptoHelper = new CryptoHelper();
+        
+        const getSecureDataUseCase = new GetSecureDataUseCase(
+            repo,
+            hashHelper,
+            cryptoHelper,
+            APPError
+        );
+        
+        const getSecurityDataApiController = new GetSecureDataApiController(
+            getSecureDataUseCase,
+        );
+        
+        const getSecurityDataGraphqlController = new GetSecureDataGraphqlController(
+            getSecureDataUseCase,
+        );
+        
+        return {
+            getSecurityDataApiController,
+            getSecurityDataGraphqlController,
+        };
+    }
+}
 
-const getSecureDataUseCase = new GetSecureDataUseCase(
-    repo,
-    hashHelper,
-    cryptoHelper,
-    APPError
-);
+export { InitGet };
 
-const getSecurityTokenApiController = new GetSecureDataApiController(
-    getSecureDataUseCase,
-);
 
-const getSecurityTokenGraphqlController = new GetSecureDataGraphqlController(
-    getSecureDataUseCase,
-);
-
-export {
-    getSecureDataUseCase,
-    getSecurityTokenApiController,
-    getSecurityTokenGraphqlController,
-};

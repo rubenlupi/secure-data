@@ -33,14 +33,17 @@ const appMiddlewares = (app) => {
 
 const handleErrors = (app) => {
     app.use((error, req, res, next) => {
+        if (res.headersSent) {
+            return next(error)
+        }
+
         if (!error) {
             return next();
         }
-        if (error instanceof APPError) {
-            return next(error);
-        }
-        // catch unhandle errors
-        res.status(error.code || 500).json(
+
+        return (error.code) ? res.status(error.code).json(
+                error,
+        ):  res.status(500).json(
             new APPError(CommonErrors.INTERNAL_SERVER_ERROR()),
         );
     });

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { ISecureData } from '../../domain/secure-data';
-import { IGetSecurityTokenArgs } from '../../http/graphql/dto/get-security-token-args';
+import { IGetSecurityDataArgs } from '../../http/graphql/dto/get-security-token-args';
 import { ISecureDataResponse } from '../../http/graphql/dto/secure-data-response';
 import { APPError } from '../../../../core/logic/errors';
 import { CommonErrors } from '../../../../core/logic/CommonErrors';
@@ -12,8 +12,8 @@ class GetSecureDataGraphqlController {
         this.useCase = useCase;
     }
 
-    public async getSecurityToken(
-        args: IGetSecurityTokenArgs
+    public async getSecurityData(
+        args: IGetSecurityDataArgs
     ) {
         try {
             // here transform to DTO - input

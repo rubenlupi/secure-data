@@ -1,17 +1,17 @@
-import { createSecurityTokenGraphqlController } from "../../../useCases/save-secure-data";
-import { IGetSecurityTokenArgs } from "../dto/get-security-token-args";
-import { getSecurityTokenGraphqlController } from "../../../useCases/get-secure-data";
+import { InitSave } from "../../../useCases/save-secure-data";
+import { IGetSecurityDataArgs } from "../dto/get-security-token-args";
+import { InitGet } from "../../../useCases/get-secure-data";
 import { ISecureData } from "../../../domain/secure-data";
 
 const resolvers = {
     setSecureData: async (args: ISecureData) => {
-        return createSecurityTokenGraphqlController
-            .saveSecurityToken(args)
+        return InitSave.getInitUseCase().createSecurityTokenGraphqlController
+            .saveSecurityData(args)
     },
 
-    getSecureData: async(args: IGetSecurityTokenArgs) => {
-        return getSecurityTokenGraphqlController
-            .getSecurityToken(args);
+    getSecureData: async(args: IGetSecurityDataArgs) => {
+        return InitGet.getInitUseCase().getSecurityDataGraphqlController
+            .getSecurityData(args);
     }
 }
 

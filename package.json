@@ -9,8 +9,8 @@
     "debug": "nodemon -r dotenv/config --inspect",
     "tests": "npm run unit-tests && npm run integration-tests",
     "clearJest": "jest --clearCache",
-    "unit-tests": "npm run clearJest&& jest src/modules/*/tests/unit/*.test.ts --forceExit",
-    "unit-tests-coverage": "jest src/modules/*/tests/unit/*.test.ts --coverage --forceExit",
+    "unit-tests": "npm run clearJest&& jest src/core/tests/*.test.ts src/modules/*/tests/unit/*.test.ts --forceExit",
+    "unit-tests-coverage": "jest src/core/tests/*.test.ts src/modules/*/tests/unit/*.test.ts --coverage --forceExit",
     "integration-tests": "npm run clearJest&& jest src/modules/*/tests/integration/*.test.ts --forceExit",
     "integration-tests-coverage": "jest src/modules/*/tests/integration/*.test.ts --coverage --forceExit",
     "linter": "tslint -c ./tslint.json './src/**/*.ts'"
@@ -40,6 +40,7 @@
     "helmet": "^4.1.0",
     "install": "^0.13.0",
     "jest": "^26.4.2",
+    "method-override": "^3.0.0",
     "moment": "^2.27.0",
     "mongodb-uri": "^0.9.7",
     "mongoose": "^5.10.2",

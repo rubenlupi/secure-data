@@ -1,5 +1,5 @@
 
-import bcrypt from 'bcrypt';
+const bcrypt = require('bcrypt');
 const saltRounds = process.env.SALT_ROUNDS;
 
 interface IHashHelper {

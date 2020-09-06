@@ -3,7 +3,7 @@ import { GetSecureDataUseCase } from "../../useCases/get-secure-data/get-secure-
 import { ISecureData } from "../../domain/secure-data";
 import { APPError } from "../mocks/APPError";
 import { CodeErrors } from "../../logic/CodeErrors";
-import { IGetSecurityTokenArgs } from "../../http/graphql/dto/get-security-token-args";
+import { IGetSecurityDataArgs } from "../../http/graphql/dto/get-security-token-args";
 import { CryptoHelper } from "../mocks/crypto";
 import { HashHelper } from "../mocks/hash";
 
@@ -35,8 +35,8 @@ describe(testDescription, () => {
             cryptoHelper,
             APPError,
         );
-        test('Check filter from IGetSecurityTokenArgs throws error when it has no value', async () => {
-            const getArgs: IGetSecurityTokenArgs = {
+        test('Check filter from IGetSecurityDataArgs throws error when it has no value', async () => {
+            const getArgs: IGetSecurityDataArgs = {
                 filterId: undefined,
                 encryption_key: '1234'
             };
@@ -48,8 +48,8 @@ describe(testDescription, () => {
                     CodeErrors.FILTER_REQUIRED_ERROR().detail);
             }
         });
-        test('Check encryption_key from IGetSecurityTokenArgs throws error when it has no value', async () => {
-            const getArgs: IGetSecurityTokenArgs = {
+        test('Check encryption_key from IGetSecurityDataArgs throws error when it has no value', async () => {
+            const getArgs: IGetSecurityDataArgs = {
                 filterId: 'a',
                 encryption_key: undefined
             };
@@ -78,7 +78,7 @@ describe(testDescription, () => {
         );
 
         test('check returned schema ISecureData[]', async () => {
-            const getArgs: IGetSecurityTokenArgs = {
+            const getArgs: IGetSecurityDataArgs = {
                 filterId: 'test',
                 encryption_key: '1234'
             };
@@ -134,7 +134,7 @@ describe(testDescription, () => {
         );
 
         test('check all the registers that contains the string', async () => {
-            const getArgs: IGetSecurityTokenArgs = {
+            const getArgs: IGetSecurityDataArgs = {
                 filterId: 'test',
                 encryption_key: '1234'
             };
@@ -151,7 +151,7 @@ describe(testDescription, () => {
         });
 
         test('check all the registers that contains an specific string', async () => {
-            const getArgs: IGetSecurityTokenArgs = {
+            const getArgs: IGetSecurityDataArgs = {
                 filterId: '^testFree$',
                 encryption_key: '1234'
             };
@@ -169,7 +169,7 @@ describe(testDescription, () => {
 
 
         test('check all the registers that starts by a string', async () => {
-            const getArgs: IGetSecurityTokenArgs = {
+            const getArgs: IGetSecurityDataArgs = {
                 filterId: '^test-',
                 encryption_key: '1234'
             };
@@ -186,7 +186,7 @@ describe(testDescription, () => {
         });
 
         test('check all the registers that start by a pattern - another options', async () => {
-            const getArgs: IGetSecurityTokenArgs = {
+            const getArgs: IGetSecurityDataArgs = {
                 filterId: '^test*',
                 encryption_key: '1234'
             };
@@ -228,7 +228,7 @@ describe(testDescription, () => {
                 cryptoHelper,
                 APPError,
             );
-            const getArgs: IGetSecurityTokenArgs = {
+            const getArgs: IGetSecurityDataArgs = {
                 filterId: 'test',
                 encryption_key: '1234'
             };
@@ -248,7 +248,7 @@ describe(testDescription, () => {
                 cryptoHelper,
                 APPError,
             );
-            const getArgs: IGetSecurityTokenArgs = {
+            const getArgs: IGetSecurityDataArgs = {
                 filterId: 'test',
                 encryption_key: '1234'
             };

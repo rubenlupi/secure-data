@@ -9,12 +9,13 @@ class GetSecureDataApiController {
         this.useCase = useCase;
     }
 
-    public async getSecurityToken(req, res: any, next) {
+    public async getSecurityData(req, res: any, next) {
         try {
             // here transform to DTO - input
+            const { filterId, encryption_key } = req.body;
             const result: ISecureData[] = await this.useCase.execute(
-                req.params.filterId,
-                req.params.encryption_key
+                filterId,
+                encryption_key,
             );
             // here transform to DTO - output
             res.status(200).send(result);

@@ -10,7 +10,7 @@ class SaveSecureDataGraphqlController {
         this.useCase = useCase;
     }
 
-    public async saveSecurityToken(data: ISecureData) {
+    public async saveSecurityData(data: ISecureData) {
         try {
             // here transform to DTO - input
             const { id, encryption_key, value } = data;

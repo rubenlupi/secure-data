@@ -77,10 +77,12 @@ Retrieval Requirements:
 If the encryption key is wrong, make a system log and do not return the item. That is,
 return an empty array instead of an error message.
 
+Althought is a get, for security,the encryption key and the filter is sent in the body.
+
 API-Rest:
 
 ```
-GET /{host}/secure-data
+POST /{host}/secure-data
 
 Content-type: application/json
 Accept: application/json
@@ -109,12 +111,25 @@ query Read {
 ```
 npm start
 ```
+### Tests
+
+In order to decouple logic each module contains his own tests.
+The folder core in modules contains the tests that affects to all the system, like helpers or general errors of the application.
+
 #### Unit tests
 ```
 npm run unit-tests
 ```
 
 #### Integration tests
+supertest npm package is requiered for integration tests. Just install once globally with:
+
+```
+npm i -g supertest
+```
+
+Then to run the intregation tests, type:
+
 ```
 npm run integration-tests
 ```
@@ -170,5 +185,10 @@ http://localhost:9200
 - STDOUT_ENVIRONMENTS
 
 ### .env
-All the variables can be set in a .env local file located in the project's root.
+At least this two entries are needed in a .env file located at the root level of the project.
+
+```
+SALT_ROUNDS=10
+STDOUT_ENVIRONMENTS=development
+```
 

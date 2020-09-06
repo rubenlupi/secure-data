@@ -1,6 +1,6 @@
-interface IGetSecurityTokenArgs {
+interface IGetSecurityDataArgs {
     filterId: string;
     encryption_key: string;
 }
 
-export { IGetSecurityTokenArgs };
+export { IGetSecurityDataArgs };
