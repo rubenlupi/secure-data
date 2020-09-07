@@ -31,3 +31,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [1.6.0](https://github.com/rubenlupi/secure-data/releases/tag/1.6.0)
 ### Added
  - Add github actions CD config and tag
+
+## [1.7.0](https://github.com/rubenlupi/secure-data/releases/tag/1.7.0)
+### Added
+ - Add json file for postman
