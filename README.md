@@ -111,7 +111,7 @@ query Read {
 }
 ```
 
-##### Retrieval Endpoint
+##### Endpoint definitions
 
 All the endpoints that are working with this solution are located in the secure-data.postman_collection.json file. You can find this file in the root of the project.
 
