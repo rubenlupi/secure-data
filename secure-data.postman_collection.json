@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "33abd74e-9e5c-4a82-8ec9-196df6c2255b",
+		"name": "secure-data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API",
+			"item": [
+				{
+					"name": "Create data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"my_first_value\",\n    \"encryption_key\": \"my_key\",\n    \"value\": {\n        \"message\": \"some value\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/secure-data",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"secure-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"filterId\":\"my_*\",\n    \"encryption_key\": \"my_key\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/secure-data/search",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"secure-data",
+								"search"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "GRAPHQL",
+			"item": [
+				{
+					"name": "Create data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  setSecureData(\n    encryption_key: \"my_key\",\n    value: \"{ \\\"page\\\": \\\"page\\\", \\\"item\\\": \\\"item\\\", \\\"action\\\": \\\"action\\\" }\",\n    id: \"my_first_value\"\n  ) {\n    id, value\n  }\n}",
+								"variables": ""
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/secure-data",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"secure-data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  getSecureData(\n    encryption_key: \"my_key\",\n    filterId: \"my_first_value\"\n  ) {\n    id, value\n  }\n}",
+								"variables": ""
+							},
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/secure-data",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"secure-data"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

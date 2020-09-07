@@ -111,6 +111,10 @@ query Read {
 }
 ```
 
+##### Retrieval Endpoint
+
+All the endpoints that are working with this solution are located in the secure-data.postman_collection.json file. You can find this file in the root of the project.
+
 ### Start server
 - Run the service up with typescript files:
 ```
